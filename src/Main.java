@@ -49,7 +49,7 @@ public class Main {
 
         byte b3 = 100;
         byte b4 = 100;
-        byte res3 = (byte) (b1 + b2);
+        byte res3 = (byte) (b3 + b4);
         System.out.println(res3); // 结果出现异常，因为超出了 byte 的取值范围
     }
 }
