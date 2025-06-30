@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Random;
 
 public class Main {
     // 这是 main 方法，表示程序的主入口
@@ -38,6 +39,23 @@ public class Main {
                 break; // 跳出循环体
             }
             System.out.println(i);
+        }
+
+        // 随机数
+        Random r = new Random();
+        int number = r.nextInt(100) + 1; // 1~100
+        Scanner sc = new Scanner(System.in);
+        while (true) {
+            System.out.println("请输入数字");
+            int guess = sc.nextInt();
+            if (guess == number) {
+                System.out.println("猜中了");
+                break;
+            } else if (guess > number) {
+                System.out.println("猜大了");
+            } else {
+                System.out.println("猜小了");
+            }
         }
     }
 }
