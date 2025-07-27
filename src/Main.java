@@ -1,69 +1,113 @@
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.Random;
 
 public class Main {
     // 这是 main 方法，表示程序的主入口
     public static void main(String[] args) {
-        // 数组的静态初始化
-        // 数据类型[] 数组名 = {元素1,元素2,元素3...}
-        int[] studentAges = {12,13,14};
-        String[] studentNames = {"张三","李四","王五"};
-        double[] studentHeight = {168.98,170.8,180};
-        // 数组元素的访问
-        int age = studentAges[0];
-        System.out.println(age);
-        studentAges[2] = 100;
-        System.out.println(studentAges[2]);
-        // 数组遍历
-        for (int i = 0; i < studentAges.length; i++) {
-            System.out.println(studentAges[i]);
-        }
-
-        double sum = 0;
-        for (int i = 0; i < studentHeight.length; i++) {
-            sum = studentHeight[i] + sum;
-        }
-        System.out.println(sum);
-
-        // 数组动态初始化
-        String[] arr = new String[10];
-        arr[0] = "lisi";
-        arr[1] = "zhangsan";
-        System.out.println(arr[0]);
-        System.out.println(arr[1]);
-        // 数组默认初始化值的规律
-        // 整数类型：默认初始化值0
-        // 小数类型：默认初始化值0.0
-        // 字符类型：默认初始化值 '/u0000'-空格
-        // 布尔类型：默认初始化值 false
-        // 引用类型：默认初始化值 null
+        // 调用方法
+        // playGame();
+        sum(10, 20);
+        getArea(2.14);
+        int sum1 = getSum(10,20,30);
+        System.out.println(sum1);
+        compare(1, 2);
 
 
-        // 案例1：数组最大值
-        int[] list1 = {33,30,2,50,99,20};
-        int max = list1[0];
-        for (int i = 1; i < list1.length; i++) {
-            if (max < list1[i]) {
-                max = list1[i];
+
+        /* System.out.println("abc"); // 先打印abc，再换行
+        System.out.print("abc"); // 只打印abc，不换行
+        System.out.println(); // 不打印，只做换行 */
+        int [] arr = {10, 20, 30, 40, 50};
+        printArr(arr);
+
+
+        int max = getMax(arr);
+        System.out.println(max);
+
+        boolean isContains = contains(arr, 50);
+        System.out.println(isContains);
+
+        int[] copyArr = copyOfRange(arr, 1, 2);
+        System.out.println(Arrays.toString(copyArr));
+    }
+
+    // 定义一个方法
+    public static void playGame() {
+        System.out.println("选人物");
+        System.out.println("开局");
+    }
+
+    public static void sum(int a, int b) {
+        int sum = a + b;
+        System.out.println("求和" + sum);
+    }
+
+    // 圆面积
+    public static void getArea(double r) {
+        double result = r * r * 3.14159;
+        System.out.println("圆的面积" + result);
+    }
+
+    // 定义返回值方法
+    public static int getSum(int num1, int num2, int num3) {
+        return num1 + num2 + num3;
+    }
+
+    // 定义方法重载
+    public static void compare(byte b1, byte b2) {
+        System.out.println(b1 == b2);
+    }
+    public static void compare(short b1, short b2) {
+        System.out.println(b1 == b2);
+    }
+    public static void compare(long b1, long b2) {
+        System.out.println(b1 == b2);
+    }
+    public static void compare(int b1, int b2) {
+        System.out.println(b1 == b2);
+    }
+
+    public static void printArr(int [] arr) {
+        System.out.print("[");
+        for (int i = 0; i < arr.length; i++) {
+            if (i == arr.length - 1) {
+                System.out.print(arr[i]);
+            } else {
+                System.out.print(arr[i] + ",");
             }
         }
-        System.out.println("最大值：" + max);
+        System.out.println("]");
+    }
 
-        // 案例2：求和
-        int[] list2 = {1,2,3,4,5};
-        int sum2 = 0;
-        for (int i = 0; i < list2.length; i++) {
-            sum2 = list2[i] + sum2;
-        }
-        System.out.println("求和" + sum2);
+    public static int getMax(int [] arr) {
+        int max = arr[0];
 
-        // 案例2：将数组中0索引和最大索引的值进行交换
-        int[] list3 = {1,2,3,4,5};
-        for (int i = 0, j = list3.length - 1; i < j; i++,j--) {
-            int temp = list3[i];
-            list3[i] = list3[j];
-            list3[j] = temp;
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] > max) {
+                max = arr[i];
+            }
         }
 
+        return max;
+    }
+
+    public static boolean contains(int [] arr, int num) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == num) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static int[] copyOfRange(int[] arr, int from, int to) {
+        int[] copy = new int[to - from];
+        int index = 0;
+        for (int i = from; i < to; i++) {
+            copy[index++] = arr[i];
+        }
+
+        return copy;
     }
 }
